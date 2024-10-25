@@ -21,7 +21,7 @@ export default function ViewPost() {
     useEffect(() => {
         const getData = async () => {
             setIsLoading(true);
-            const res = await Axios.get(`http://localhost:4000/api/post/${params.id}`);
+            const res = await Axios.get(`https://server-production-9d6d.up.railway.app/api/post/${params.id}`);
             setPost(res.data);
         }
         getData();
@@ -29,7 +29,7 @@ export default function ViewPost() {
 
     useEffect(() => {
         const getData = async () => {
-            const res = await Axios.get(`http://localhost:4000/api/comments/${params.id}`);
+            const res = await Axios.get(`https://server-production-9d6d.up.railway.app/api/comments/${params.id}`);
             setComments(res.data);
         }
         getData();
@@ -37,7 +37,7 @@ export default function ViewPost() {
 
     useEffect(() => {
         const getData = async () => {
-            const res = await Axios.get('http://localhost:4000/api/userinfo', { headers: { 'authorization': localStorage.getItem("SavedToken") } });
+            const res = await Axios.get('https://server-production-9d6d.up.railway.app/api/userinfo', { headers: { 'authorization': localStorage.getItem("SavedToken") } });
             setUserInfo(res.data);
         }
         getData();
@@ -62,28 +62,28 @@ export default function ViewPost() {
 
     const deletePost = async (e) => {
         e.preventDefault();
-        const res = await Axios({ method: 'delete', url: `http://localhost:4000/api/post/${params.id}`, headers: { 'Authorization': localStorage.getItem("SavedToken") } });
+        const res = await Axios({ method: 'delete', url: `https://server-production-9d6d.up.railway.app/api/post/${params.id}`, headers: { 'Authorization': localStorage.getItem("SavedToken") } });
         window.location = '/';
     }
 
     const publishPost = async (e) => {
         e.preventDefault();
-        const res = await Axios({ method: 'post', url: `http://localhost:4000/api/publish/${params.id}`, headers: { 'Authorization': localStorage.getItem("SavedToken") } });
+        const res = await Axios({ method: 'post', url: `https://server-production-9d6d.up.railway.app/api/publish/${params.id}`, headers: { 'Authorization': localStorage.getItem("SavedToken") } });
         window.location = '/';
     }
 
     const unpublishPost = async (e) => {
         e.preventDefault();
-        const res = await Axios({ method: 'post', url: `http://localhost:4000/api/unpublish/${params.id}`, headers: { 'Authorization': localStorage.getItem("SavedToken") } });
+        const res = await Axios({ method: 'post', url: `https://server-production-9d6d.up.railway.app/api/unpublish/${params.id}`, headers: { 'Authorization': localStorage.getItem("SavedToken") } });
         window.location = '/';
     }
 
     const postComment = async (e) => {
         e.preventDefault();
         document.getElementById('commentBox').textContent = '';
-        const res = await Axios({ method: 'post', url: `http://localhost:4000/api/comments/${params.id}`, headers: { 'Authorization': localStorage.getItem("SavedToken") }, data: { comment } });
+        const res = await Axios({ method: 'post', url: `https://server-production-9d6d.up.railway.app/api/comments/${params.id}`, headers: { 'Authorization': localStorage.getItem("SavedToken") }, data: { comment } });
         const getData = async () => {
-            const res = await Axios.get(`http://localhost:4000/api/comments/${params.id}`);
+            const res = await Axios.get(`https://server-production-9d6d.up.railway.app/api/comments/${params.id}`);
             setComments(res.data);
         }
         getData();
@@ -97,9 +97,9 @@ export default function ViewPost() {
 
     const editComment = async (e) => {
         e.preventDefault();
-        const res = await Axios({ method: 'put', url: `http://localhost:4000/api/comments/${commentId}`, headers: { 'Authorization': localStorage.getItem("SavedToken") }, data: { edit } });
+        const res = await Axios({ method: 'put', url: `https://server-production-9d6d.up.railway.app/api/comments/${commentId}`, headers: { 'Authorization': localStorage.getItem("SavedToken") }, data: { edit } });
         const getData = async () => {
-            const res = await Axios.get(`http://localhost:4000/api/comments/${params.id}`);
+            const res = await Axios.get(`https://server-production-9d6d.up.railway.app/api/comments/${params.id}`);
             setComments(res.data);
         }
         getData();
@@ -108,9 +108,9 @@ export default function ViewPost() {
     }
 
     const deleteComment = async (id) => {
-        const res = await Axios({ method: 'delete', url: `http://localhost:4000/api/comments/${id}`, headers: { 'Authorization': localStorage.getItem("SavedToken") } });
+        const res = await Axios({ method: 'delete', url: `https://server-production-9d6d.up.railway.app/api/comments/${id}`, headers: { 'Authorization': localStorage.getItem("SavedToken") } });
         const getData = async () => {
-            const res = await Axios.get(`http://localhost:4000/api/comments/${params.id}`);
+            const res = await Axios.get(`https://server-production-9d6d.up.railway.app/api/comments/${params.id}`);
             setComments(res.data);
         }
         getData();
