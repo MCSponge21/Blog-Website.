@@ -11,7 +11,7 @@ export default function CreatePost() {
 
   useEffect(() => {
     const getData = async () => {
-      const res = await Axios.get('http://localhost:4000/api/userinfo', { headers: { 'Authorization': localStorage.getItem("SavedToken") } });
+      const res = await Axios.get('https://server-production-9d6d.up.railway.app/api/userinfo', { headers: { 'Authorization': localStorage.getItem("SavedToken") } });
       setUserInfo(res.data);
     }
     getData();
@@ -20,7 +20,7 @@ export default function CreatePost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    Axios.post('http://localhost:4000/api/posts', { title, text, about, url },
+    Axios.post('https://server-production-9d6d.up.railway.app/api/posts', { title, text, about, url },
       { headers: { 'Authorization': localStorage.getItem("SavedToken") } }
     )
       .then((res) => {

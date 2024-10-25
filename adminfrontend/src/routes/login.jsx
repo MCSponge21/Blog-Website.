@@ -15,7 +15,7 @@ export default function LoginPage() {
         if(password == ''){setErrors((errors) => [...errors, 'Password is required'])}
         console.log(errors);
 
-        Axios.post('http://localhost:4000/api/login', { username, password })
+        Axios.post('https://server-production-9d6d.up.railway.app/api/login', { username, password })
             .then((res) => {
                 if (res.data == 'unauthorized') {
                     if(username && password){setErrors((errors) => [...errors, 'Account not found'])}

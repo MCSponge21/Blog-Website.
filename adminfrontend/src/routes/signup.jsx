@@ -44,7 +44,7 @@ export default function SignUpPage() {
         console.log(errnum);
 
         if (errnum.current == 0) {
-            Axios.post('http://localhost:4000/api/signup', { username, password })
+            Axios.post('https://server-production-9d6d.up.railway.app/api/signup', { username, password })
             .then((res) => {
                 console.log(res.data)
             })

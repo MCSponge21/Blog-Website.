@@ -14,7 +14,7 @@ export default function EditPost() {
     let params = useParams();
     useEffect(() => {
         const getData = async () => {
-            const res = await Axios.get(`http://localhost:4000/api/post/${params.id}`);
+            const res = await Axios.get(`https://server-production-9d6d.up.railway.app/api/post/${params.id}`);
             setPost(res.data);
             setTitle(res.data.title);
             setAbout(res.data.about);
@@ -26,7 +26,7 @@ export default function EditPost() {
 
     useEffect(() => {
         const getData = async () => {
-            const res = await Axios.get('http://localhost:4000/api/userinfo', { headers: { 'authorization': localStorage.getItem("SavedToken") } });
+            const res = await Axios.get('https://server-production-9d6d.up.railway.app/api/userinfo', { headers: { 'authorization': localStorage.getItem("SavedToken") } });
             setUserInfo(res.data);
         }
         getData();
@@ -36,7 +36,7 @@ export default function EditPost() {
         e.preventDefault();
         const res = await Axios({
             method: 'put',
-            url: `http://localhost:4000/api/post/${params.id}`,
+            url: `https://server-production-9d6d.up.railway.app/api/post/${params.id}`,
             data: {title, about, text, url},
             headers: { 'Authorization': localStorage.getItem("SavedToken") }
         });

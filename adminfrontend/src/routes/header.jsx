@@ -22,7 +22,7 @@ export default function Header() {
     useEffect(() => {
         const getData = async () => {
             if (localStorage.getItem("SavedToken") !== null) {
-                const res = await Axios.get('http://localhost:4000/api/userinfo', { headers: { 'Authorization': localStorage.getItem("SavedToken") } });
+                const res = await Axios.get('https://server-production-9d6d.up.railway.app/api/userinfo', { headers: { 'Authorization': localStorage.getItem("SavedToken") } });
                 setUserInfo(res.data);
             }
         }
