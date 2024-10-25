@@ -1,0 +1,3 @@
+[submodule "Blog-Website"]
+	path = Blog-Website
+	url = https://github.com/MCSponge21/Blog-Website.git
